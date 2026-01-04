@@ -16,7 +16,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(
-  cors()
+  cors({
+    origin: [
+      "http://localhost:5173",     // Vite dev
+      "http://localhost:3000",     // Next.js dev 
+    ],
+    credentials: true,
+  })
 );
 
 app.use("/api", routes);
